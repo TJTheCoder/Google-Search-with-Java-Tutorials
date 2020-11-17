@@ -16,12 +16,12 @@ public class GoogleSearchScapper {
 		String encoding = "UTF-8";
 		
 		try {
-			String searchText = "donald trump wikipedia";
-			Document duckduckgo = Jsoup.connect("https://duckduckgo.com/?q=" + URLEncoder.encode(searchText, encoding)).userAgent("Mozilla/5.0").get();
+			String searchText = "Cat";
+			Document google = Jsoup.connect("https://www.google.com/search?q=" +
+					URLEncoder.encode(searchText, encoding)).userAgent("Mozilla/5.0").get();
 			
-			Elements webSitesLinks = duckduckgo.getElementsByClass("result__url__domain");
-			
-			//Check if any results found
+			Elements webSitesLinks = google.getElementsByTag("cite");
+
 			if (webSitesLinks.isEmpty()) {
 				System.out.println("No results found");
 				return;
